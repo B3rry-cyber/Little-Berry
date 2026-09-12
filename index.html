@@ -5,387 +5,890 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta name="theme-color" content="#ffb7cb">
+
   <title>Littleberry 🍓</title>
 
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+  <div class="background-decor">
+    <span class="cloud cloud-one">☁️</span>
+    <span class="cloud cloud-two">☁️</span>
+    <span class="sparkle sparkle-one">✦</span>
+    <span class="sparkle sparkle-two">✧</span>
+    <span class="berry berry-one">🍓</span>
+  </div>
+
   <div class="app">
 
-    <!-- Sidebar -->
     <aside class="sidebar">
 
-      <div class="logo">
-        <div class="logo-icon">🍓</div>
-        <h1>Littleberry</h1>
-        <p>Your cozy little space ♡</p>
+      <div class="logo-area">
+        <div class="logo-bubble">🍓</div>
+
+        <div>
+          <h1>Littleberry</h1>
+          <p>your cozy little space ♡</p>
+        </div>
       </div>
 
-      <nav>
-        <button class="nav-button active">🏠 Home</button>
-        <button class="nav-button">⭐ Activities</button>
-        <button class="nav-button">🎁 Rewards</button>
-        <button class="nav-button">💗 Comfort Corner</button>
-        <button class="nav-button">📅 Routine</button>
-        <button class="nav-button">⚙️ Settings</button>
+      <nav class="sidebar-nav">
+
+        <button class="nav-button active" data-page="home">
+          <span>🏠</span>
+          Home
+        </button>
+
+        <button class="nav-button" data-page="activities">
+          <span>🎨</span>
+          Activities
+        </button>
+
+        <button class="nav-button" data-page="rewards">
+          <span>⭐</span>
+          Rewards
+        </button>
+
+        <button class="nav-button" data-page="comfort">
+          <span>💗</span>
+          Comfort
+        </button>
+
+        <button class="nav-button" data-page="routine">
+          <span>🌙</span>
+          Routine
+        </button>
+
+        <button class="nav-button" data-page="settings">
+          <span>⚙️</span>
+          Settings
+        </button>
+
       </nav>
 
-      <div class="sidebar-message">
-        <span>🐰🍓</span>
-        <p>A softer, kinder you is always enough ♡</p>
+      <div class="sidebar-love">
+        <div class="plushie">🐰</div>
+
+        <strong>Little reminder</strong>
+
+        <p>
+          Tiny progress is still progress.
+        </p>
+
+        <span>🍓♡🌙</span>
       </div>
 
     </aside>
 
 
-    <!-- Main Content -->
-    <main class="main-content">
+    <main class="content">
 
-      <!-- Header -->
-      <header class="hero">
+      <header class="topbar">
 
         <div>
-          <p class="tiny-text">🍓 🌙 ✨</p>
-
-          <h2>Littleberry</h2>
-
-          <p>Your cozy little space ♡</p>
+          <p class="eyebrow">🍓 LITTLEBERRY</p>
+          <h2 id="pageTitle">Home</h2>
         </div>
 
-        <div class="hero-message">
-          Small steps.<br>
-          Brighter days.<br>
-          Happier you ♡
+        <div class="top-actions">
+
+          <button
+            class="circle-button"
+            id="themeCycle"
+            aria-label="Change theme"
+          >
+            🎀
+          </button>
+
+          <div class="profile-bubble">
+            🐰
+          </div>
+
         </div>
 
       </header>
 
 
-      <!-- Mood Check -->
-      <section class="card mood-card">
+      <!-- HOME -->
+      <section class="page active" id="home">
 
-        <div class="card-heading">
-          <div>
-            <h3>🌸 How are you feeling today?</h3>
-            <p>It's okay to feel whatever you feel ♡</p>
+        <section class="hero-card">
+
+          <div class="hero-text">
+
+            <div class="hero-tag">
+              ✨ cozy mode activated
+            </div>
+
+            <h2>
+              Welcome back,
+              <span>little berry</span> ♡
+            </h2>
+
+            <p>
+              Your tiny corner for comfort, routines,
+              rewards and sweet little moments.
+            </p>
+
+            <div class="hero-buttons">
+
+              <button
+                class="primary-button"
+                data-go="activities"
+              >
+                🎨 Pick an activity
+              </button>
+
+              <button
+                class="ghost-button"
+                data-go="comfort"
+              >
+                💗 Get comfy
+              </button>
+
+            </div>
+
           </div>
-        </div>
 
-        <div class="mood-options">
+          <div class="hero-visual">
 
-          <button class="mood-button">
-            <span>🍓</span>
-            Happy
-          </button>
+            <div class="moon-shape">🌙</div>
 
-          <button class="mood-button">
-            <span>☀️</span>
-            Calm
-          </button>
+            <div class="hero-cloud cloud-a">☁️</div>
+            <div class="hero-cloud cloud-b">☁️</div>
 
-          <button class="mood-button">
-            <span>☁️</span>
-            Okay
-          </button>
+            <div class="hero-bunny">🐰</div>
+            <div class="hero-strawberry">🍓</div>
 
-          <button class="mood-button">
-            <span>🌧️</span>
-            Sad
-          </button>
+            <span class="hero-star star-a">✦</span>
+            <span class="hero-star star-b">✧</span>
+            <span class="hero-star star-c">⋆</span>
 
-          <button class="mood-button">
-            <span>💜</span>
-            Anxious
-          </button>
+          </div>
 
-          <button class="mood-button">
-            <span>🌙</span>
-            Tired
-          </button>
+        </section>
+
+
+        <section class="glass-card mood-card">
+
+          <div class="section-heading">
+
+            <div>
+              <p class="section-label">
+                DAILY CHECK-IN
+              </p>
+
+              <h3>
+                How are you feeling?
+              </h3>
+
+              <p>
+                Pick the one that feels closest right now ♡
+              </p>
+            </div>
+
+            <div class="heading-icon">
+              🌸
+            </div>
+
+          </div>
+
+          <div class="mood-grid">
+
+            <button class="mood-button" data-mood="Happy">
+              <span>🍓</span>
+              <strong>Happy</strong>
+            </button>
+
+            <button class="mood-button" data-mood="Calm">
+              <span>☀️</span>
+              <strong>Calm</strong>
+            </button>
+
+            <button class="mood-button" data-mood="Okay">
+              <span>☁️</span>
+              <strong>Okay</strong>
+            </button>
+
+            <button class="mood-button" data-mood="Sad">
+              <span>🌧️</span>
+              <strong>Sad</strong>
+            </button>
+
+            <button class="mood-button" data-mood="Anxious">
+              <span>💜</span>
+              <strong>Anxious</strong>
+            </button>
+
+            <button class="mood-button" data-mood="Tired">
+              <span>🌙</span>
+              <strong>Tired</strong>
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <div class="dashboard-grid">
+
+          <section class="glass-card">
+
+            <div class="section-heading compact">
+
+              <div>
+                <p class="section-label">TODAY</p>
+                <h3>🍓 Little Routine</h3>
+              </div>
+
+              <button class="mini-link" data-go="routine">
+                Open
+              </button>
+
+            </div>
+
+            <div class="task-list">
+
+              <label class="task">
+                <input type="checkbox" data-task="bed">
+                <span class="custom-check"></span>
+                <span>Make my bed</span>
+              </label>
+
+              <label class="task">
+                <input type="checkbox" data-task="teeth">
+                <span class="custom-check"></span>
+                <span>Brush my teeth</span>
+              </label>
+
+              <label class="task">
+                <input type="checkbox" data-task="drink">
+                <span class="custom-check"></span>
+                <span>Have a drink</span>
+              </label>
+
+              <label class="task">
+                <input type="checkbox" data-task="snack">
+                <span class="custom-check"></span>
+                <span>Have a yummy snack</span>
+              </label>
+
+              <label class="task">
+                <input type="checkbox" data-task="kind">
+                <span class="custom-check"></span>
+                <span>Do something kind for myself</span>
+              </label>
+
+            </div>
+
+          </section>
+
+
+          <section class="glass-card reward-card">
+
+            <div class="section-heading compact">
+
+              <div>
+                <p class="section-label">LITTLE WINS</p>
+                <h3>⭐ Sticker Chart</h3>
+              </div>
+
+              <span class="tiny-pill">
+                this week
+              </span>
+
+            </div>
+
+            <div class="sticker-week">
+
+              <button class="sticker-day" data-day="Mon">
+                <span>☆</span>
+                <small>Mon</small>
+              </button>
+
+              <button class="sticker-day" data-day="Tue">
+                <span>☆</span>
+                <small>Tue</small>
+              </button>
+
+              <button class="sticker-day" data-day="Wed">
+                <span>☆</span>
+                <small>Wed</small>
+              </button>
+
+              <button class="sticker-day" data-day="Thu">
+                <span>☆</span>
+                <small>Thu</small>
+              </button>
+
+              <button class="sticker-day" data-day="Fri">
+                <span>☆</span>
+                <small>Fri</small>
+              </button>
+
+              <button class="sticker-day" data-day="Sat">
+                <span>☆</span>
+                <small>Sat</small>
+              </button>
+
+              <button class="sticker-day" data-day="Sun">
+                <span>☆</span>
+                <small>Sun</small>
+              </button>
+
+            </div>
+
+            <div class="progress-area">
+
+              <div class="progress-track">
+                <div
+                  class="progress-fill"
+                  id="stickerProgress"
+                ></div>
+              </div>
+
+              <span id="stickerCount">
+                0 / 7
+              </span>
+
+            </div>
+
+            <div class="encouragement">
+              🧸 Every tiny win deserves a sticker ♡
+            </div>
+
+          </section>
+
+
+          <section class="glass-card comfort-preview">
+
+            <div class="section-heading compact">
+
+              <div>
+                <p class="section-label">SAFE SPACE</p>
+                <h3>💗 Comfort Corner</h3>
+              </div>
+
+            </div>
+
+            <div class="comfort-art">
+              <span>☁️</span>
+              <span class="big-plush">🐰</span>
+              <span>🌙</span>
+            </div>
+
+            <p>
+              You don't have to fix everything right now.
+            </p>
+
+            <button
+              class="soft-button"
+              data-go="comfort"
+            >
+              Enter comfort corner
+            </button>
+
+          </section>
+
+
+          <section class="glass-card">
+
+            <div class="section-heading compact">
+
+              <div>
+                <p class="section-label">SELF CARE</p>
+                <h3>🥤 Snacks & Drinks</h3>
+              </div>
+
+            </div>
+
+            <div class="counter-box">
+
+              <div class="counter-info">
+                <span class="counter-emoji">🍓</span>
+
+                <div>
+                  <strong>Snacks</strong>
+                  <small id="snackCount">0 today</small>
+                </div>
+              </div>
+
+              <div class="counter-buttons">
+
+                <button
+                  data-counter="snack"
+                  data-change="-1"
+                >
+                  −
+                </button>
+
+                <button
+                  data-counter="snack"
+                  data-change="1"
+                >
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+            <div class="counter-box">
+
+              <div class="counter-info">
+                <span class="counter-emoji">🥤</span>
+
+                <div>
+                  <strong>Drinks</strong>
+                  <small id="drinkCount">0 today</small>
+                </div>
+              </div>
+
+              <div class="counter-buttons">
+
+                <button
+                  data-counter="drink"
+                  data-change="-1"
+                >
+                  −
+                </button>
+
+                <button
+                  data-counter="drink"
+                  data-change="1"
+                >
+                  +
+                </button>
+
+              </div>
+
+            </div>
+
+          </section>
+
+
+          <section class="glass-card">
+
+            <div class="section-heading compact">
+
+              <div>
+                <p class="section-label">TONIGHT</p>
+                <h3>🌙 Bedtime Nest</h3>
+              </div>
+
+            </div>
+
+            <div class="bedtime-list">
+
+              <div>🧸 Grab a plushie</div>
+              <div>🪥 Brush teeth</div>
+              <div>🛏️ Get cozy</div>
+              <div>📖 Read or listen</div>
+              <div>🌙 Lower the lights</div>
+
+            </div>
+
+          </section>
+
+
+          <section class="glass-card">
+
+            <div class="section-heading compact">
+
+              <div>
+                <p class="section-label">PLAY</p>
+                <h3>🎨 Little Activities</h3>
+              </div>
+
+            </div>
+
+            <div class="quick-activities">
+
+              <button data-activity="Colouring">
+                <span>🖍️</span>
+                Colouring
+              </button>
+
+              <button data-activity="Cartoons">
+                <span>📺</span>
+                Cartoons
+              </button>
+
+              <button data-activity="Music">
+                <span>🎧</span>
+                Music
+              </button>
+
+              <button data-activity="Crafts">
+                <span>✂️</span>
+                Crafts
+              </button>
+
+              <button data-activity="Nap">
+                <span>☁️</span>
+                Nap
+              </button>
+
+              <button data-activity="Plushie Time">
+                <span>🧸</span>
+                Plushies
+              </button>
+
+            </div>
+
+          </section>
 
         </div>
 
       </section>
 
 
-      <!-- Dashboard Grid -->
-      <div class="dashboard-grid">
+      <!-- ACTIVITIES -->
+      <section class="page" id="activities">
+
+        <div class="page-banner">
+          <span>🎨</span>
+
+          <div>
+            <p class="section-label">PLAYTIME</p>
+            <h2>Little Activities</h2>
+            <p>Pick something that sounds nice right now.</p>
+          </div>
+        </div>
+
+        <div class="activity-grid">
+
+          <button class="activity-card" data-activity="Colouring">
+            <span>🖍️</span>
+            <h3>Colouring</h3>
+            <p>Make something soft, silly or sparkly.</p>
+          </button>
+
+          <button class="activity-card" data-activity="Cartoons">
+            <span>📺</span>
+            <h3>Cartoons</h3>
+            <p>Choose a familiar comfort show.</p>
+          </button>
+
+          <button class="activity-card" data-activity="Music">
+            <span>🎧</span>
+            <h3>Music</h3>
+            <p>Put on something happy or calming.</p>
+          </button>
+
+          <button class="activity-card" data-activity="Crafts">
+            <span>✂️</span>
+            <h3>Crafts</h3>
+            <p>Paper, stickers, glue and tiny ideas.</p>
+          </button>
+
+          <button class="activity-card" data-activity="Plushie Time">
+            <span>🧸</span>
+            <h3>Plushie Time</h3>
+            <p>Grab your favourite cuddle buddy.</p>
+          </button>
+
+          <button class="activity-card" data-activity="Quiet Time">
+            <span>☁️</span>
+            <h3>Quiet Time</h3>
+            <p>Rest somewhere soft with no pressure.</p>
+          </button>
+
+        </div>
+
+        <div id="activityChoice" class="choice-banner">
+          🍓 Choose something cozy.
+        </div>
+
+      </section>
 
 
-        <!-- Today's Routine -->
-        <section class="card">
+      <!-- REWARDS -->
+      <section class="page" id="rewards">
 
-          <div class="card-heading">
-            <h3>📋 Today's Routine</h3>
+        <div class="page-banner">
+          <span>⭐</span>
+
+          <div>
+            <p class="section-label">LITTLE WINS</p>
+            <h2>Berry Rewards</h2>
+            <p>Celebrate every tiny thing you managed today.</p>
+          </div>
+        </div>
+
+        <section class="glass-card reward-large">
+
+          <div class="reward-number">
+            <strong id="rewardBigCount">0</strong>
+            <span>stickers this week</span>
           </div>
 
-          <div class="checklist">
+          <div class="reward-day-grid">
 
-            <label>
-              <input type="checkbox">
-              Make my bed
-            </label>
+            <button data-day="Mon">
+              <span>☆</span>
+              Monday
+            </button>
 
-            <label>
-              <input type="checkbox">
-              Brush my teeth
-            </label>
+            <button data-day="Tue">
+              <span>☆</span>
+              Tuesday
+            </button>
 
-            <label>
-              <input type="checkbox">
-              Get dressed
-            </label>
+            <button data-day="Wed">
+              <span>☆</span>
+              Wednesday
+            </button>
 
-            <label>
-              <input type="checkbox">
-              Have a yummy snack
-            </label>
+            <button data-day="Thu">
+              <span>☆</span>
+              Thursday
+            </button>
 
-            <label>
-              <input type="checkbox">
-              Do something I enjoy
-            </label>
+            <button data-day="Fri">
+              <span>☆</span>
+              Friday
+            </button>
 
-            <label>
-              <input type="checkbox">
-              Be proud of myself ♡
-            </label>
+            <button data-day="Sat">
+              <span>☆</span>
+              Saturday
+            </button>
+
+            <button data-day="Sun">
+              <span>☆</span>
+              Sunday
+            </button>
 
           </div>
 
         </section>
 
+      </section>
 
-        <!-- Sticker Chart -->
-        <section class="card">
 
-          <div class="card-heading">
-            <h3>⭐ Sticker Chart</h3>
+      <!-- COMFORT -->
+      <section class="page" id="comfort">
+
+        <div class="page-banner">
+          <span>💗</span>
+
+          <div>
+            <p class="section-label">SAFE & COZY</p>
+            <h2>Comfort Corner</h2>
+            <p>Pick one gentle thing. That's enough.</p>
+          </div>
+        </div>
+
+        <div class="comfort-grid">
+
+          <article>
+            <span>🌬️</span>
+            <h3>Slow breathing</h3>
+            <p>Breathe in softly and let your exhale be longer.</p>
+          </article>
+
+          <article>
+            <span>🧸</span>
+            <h3>Plushie cuddle</h3>
+            <p>Grab something soft and hold it close.</p>
+          </article>
+
+          <article>
+            <span>🎧</span>
+            <h3>Comfort sounds</h3>
+            <p>Music, rain sounds or a familiar show.</p>
+          </article>
+
+          <article>
+            <span>🛏️</span>
+            <h3>Blanket nest</h3>
+            <p>Build yourself a tiny cozy nest.</p>
+          </article>
+
+          <article>
+            <span>🥤</span>
+            <h3>Little sip</h3>
+            <p>Have a drink and take a few gentle sips.</p>
+          </article>
+
+          <article>
+            <span>🌙</span>
+            <h3>Quiet time</h3>
+            <p>You are allowed to do nothing for a while.</p>
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- ROUTINE -->
+      <section class="page" id="routine">
+
+        <div class="page-banner">
+          <span>🌙</span>
+
+          <div>
+            <p class="section-label">GENTLE ROUTINE</p>
+            <h2>My Little Routine</h2>
+            <p>No perfect streaks required.</p>
+          </div>
+        </div>
+
+        <section class="glass-card routine-large">
+
+          <div class="task-list">
+
+            <label class="task">
+              <input type="checkbox" data-task="bed">
+              <span class="custom-check"></span>
+              <span>Make my bed</span>
+            </label>
+
+            <label class="task">
+              <input type="checkbox" data-task="teeth">
+              <span class="custom-check"></span>
+              <span>Brush my teeth</span>
+            </label>
+
+            <label class="task">
+              <input type="checkbox" data-task="drink">
+              <span class="custom-check"></span>
+              <span>Have a drink</span>
+            </label>
+
+            <label class="task">
+              <input type="checkbox" data-task="snack">
+              <span class="custom-check"></span>
+              <span>Have something to eat</span>
+            </label>
+
+            <label class="task">
+              <input type="checkbox" data-task="clothes">
+              <span class="custom-check"></span>
+              <span>Put on comfy clothes</span>
+            </label>
+
+            <label class="task">
+              <input type="checkbox" data-task="activity">
+              <span class="custom-check"></span>
+              <span>Do something I enjoy</span>
+            </label>
+
+            <label class="task">
+              <input type="checkbox" data-task="kind">
+              <span class="custom-check"></span>
+              <span>Do something kind for myself</span>
+            </label>
+
           </div>
 
-          <div class="sticker-days">
+          <button id="resetRoutine" class="soft-button">
+            Reset routine
+          </button>
 
-            <div>
+        </section>
+
+      </section>
+
+
+      <!-- SETTINGS -->
+      <section class="page" id="settings">
+
+        <div class="page-banner">
+          <span>⚙️</span>
+
+          <div>
+            <p class="section-label">MAKE IT YOURS</p>
+            <h2>Settings</h2>
+            <p>Choose the Littleberry vibe you want.</p>
+          </div>
+        </div>
+
+        <section class="glass-card">
+
+          <h3 class="settings-title">
+            Choose a theme
+          </h3>
+
+          <div class="theme-grid">
+
+            <button data-theme="strawberry">
               <span>🍓</span>
-              <p>Mon</p>
-            </div>
+              <strong>Strawberry Cream</strong>
+              <small>Pink • cream • berry</small>
+            </button>
 
-            <div>
-              <span>🍓</span>
-              <p>Tue</p>
-            </div>
+            <button data-theme="moon">
+              <span>🌙</span>
+              <strong>Moonbaby</strong>
+              <small>Lavender • blue • stars</small>
+            </button>
 
-            <div>
-              <span>🍓</span>
-              <p>Wed</p>
-            </div>
-
-            <div>
-              <span>🍓</span>
-              <p>Thu</p>
-            </div>
-
-            <div>
-              <span>○</span>
-              <p>Fri</p>
-            </div>
-
-            <div>
-              <span>○</span>
-              <p>Sat</p>
-            </div>
-
-            <div>
-              <span>○</span>
-              <p>Sun</p>
-            </div>
+            <button data-theme="garden">
+              <span>🌷</span>
+              <strong>Fairy Garden</strong>
+              <small>Mint • blush • flowers</small>
+            </button>
 
           </div>
 
-          <div class="progress">
-
-            <div class="progress-bar">
-              <div class="progress-fill"></div>
-            </div>
-
-            <p>4 / 7 stickers</p>
-
-          </div>
-
-          <div class="soft-message">
-            🧸 Keep going! You're doing amazing ♡
-          </div>
+          <button id="clearData" class="danger-button">
+            Reset all Littleberry data
+          </button>
 
         </section>
 
-
-        <!-- Comfort Corner -->
-        <section class="card">
-
-          <div class="card-heading">
-            <h3>💗 Comfort Corner</h3>
-          </div>
-
-          <div class="comfort-emoji">
-            🐰 ☁️ 🌙
-          </div>
-
-          <div class="comfort-list">
-
-            <p>♡ Take a deep breath</p>
-
-            <p>♡ Hug a plushie</p>
-
-            <p>♡ Listen to calming music</p>
-
-            <p>♡ Get cozy under a blanket</p>
-
-            <p>♡ Remember that you are safe here</p>
-
-          </div>
-
-        </section>
+      </section>
 
 
-        <!-- Snacks & Drinks -->
-        <section class="card">
-
-          <div class="card-heading">
-            <h3>🥤 Snacks & Drinks</h3>
-          </div>
-
-          <div class="tracker">
-
-            <h4>Snacks</h4>
-
-            <div class="tracker-icons">
-              🍓 🍓 🍓 ♡ ♡
-            </div>
-
-            <p>3 / 5</p>
-
-          </div>
-
-          <div class="tracker">
-
-            <h4>Drinks</h4>
-
-            <div class="tracker-icons">
-              🥤 🥤 🥤 🥤 ♡ ♡
-            </div>
-
-            <p>4 / 6</p>
-
-          </div>
-
-          <div class="soft-message">
-            🍓 Fuel your little adventures ♡
-          </div>
-
-        </section>
-
-
-        <!-- Bedtime Routine -->
-        <section class="card">
-
-          <div class="card-heading">
-            <h3>🌙 Bedtime Routine</h3>
-          </div>
-
-          <div class="checklist">
-
-            <label>
-              <input type="checkbox">
-              Pajamas on
-            </label>
-
-            <label>
-              <input type="checkbox">
-              Brush teeth
-            </label>
-
-            <label>
-              <input type="checkbox">
-              Read something cozy
-            </label>
-
-            <label>
-              <input type="checkbox">
-              Lights low
-            </label>
-
-            <label>
-              <input type="checkbox">
-              Hug my plushie
-            </label>
-
-            <label>
-              <input type="checkbox">
-              Goodnight ♡
-            </label>
-
-          </div>
-
-        </section>
-
-
-        <!-- Little Activities -->
-        <section class="card">
-
-          <div class="card-heading">
-            <h3>🎮 Little Activities</h3>
-            <p>Choose something fun!</p>
-          </div>
-
-          <div class="activities-grid">
-
-            <button>
-              <span>🖍️</span>
-              Coloring
-            </button>
-
-            <button>
-              <span>📺</span>
-              Cartoons
-            </button>
-
-            <button>
-              <span>🎧</span>
-              Music
-            </button>
-
-            <button>
-              <span>✂️</span>
-              Crafts
-            </button>
-
-            <button>
-              <span>☁️</span>
-              Nap Time
-            </button>
-
-            <button>
-              <span>🧸</span>
-              Free Play
-            </button>
-
-          </div>
-
-        </section>
-
-      </div>
-
-
-      <!-- Footer -->
       <footer>
-        🍓 A softer tomorrow can still be a bright tomorrow ♡
+        <span>🍓 Littleberry</span>
+        <span>made for soft little days ♡</span>
       </footer>
 
     </main>
 
   </div>
+
+
+  <div id="toast" class="toast"></div>
+
+
+  <nav class="mobile-nav">
+
+    <button class="mobile-nav-button active" data-page="home">
+      <span>🏠</span>
+      Home
+    </button>
+
+    <button class="mobile-nav-button" data-page="activities">
+      <span>🎨</span>
+      Play
+    </button>
+
+    <button class="mobile-nav-button" data-page="rewards">
+      <span>⭐</span>
+      Rewards
+    </button>
+
+    <button class="mobile-nav-button" data-page="comfort">
+      <span>💗</span>
+      Comfort
+    </button>
+
+    <button class="mobile-nav-button" data-page="settings">
+      <span>⚙️</span>
+      More
+    </button>
+
+  </nav>
 
 
   <script src="script.js"></script>
