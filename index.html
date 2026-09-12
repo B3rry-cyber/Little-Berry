@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff7fb" />
+  <title>Littleberry</title>
+
+  <style>
+    :root {
+      --bg: #fff8fb;
+      --surface: #ffffff;
+      --surface-soft: #fff0f6;
+      --surface-purple: #f0ebff;
+      --surface-blue: #eaf5ff;
+      --surface-yellow: #fff4d8;
+      --text: #523f4e;
+      --muted: #947f90;
+      --pink: #ff93b7;
+      --pink-dark: #df668f;
+      --purple: #b5a0ff;
+      --blue: #9fcdf6;
+      --yellow: #ffd678;
+      --border: #f2e5ec;
+      --shadow: 0 14px 36px rgba(118, 78, 108, .10);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      background: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255, 207, 225, .6), transparent 32%),
+        radial-gradient(circle at 100% 10%, rgba(221, 211, 255, .55), transparent 30%),
+        linear-gradient(180deg, #fffafd, #fff7fb 55%, #fffafe);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    input,
+    select,
+    textarea {
+      outline: none;
+    }
+
+    .app {
+      width: min(100%, 560px);
+      min-height: 100vh;
+      margin: 0 auto;
+      padding: max(20px, env(safe-area-inset-top)) 18px 112px;
+      position: relative;
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 78px;
+      margin-bottom: 15px;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: var(--pink-dark);
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+    }
+
+    .app-header h1 {
+      margin-top: 3px;
+      font-size: 1.75rem;
+      letter-spacing: -.04em;
+    }
+
+    .app-header p.subtitle {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    .profile-button {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      background: linear-gradient(145deg, #ffe2ec, #f0e8ff);
+      box-shadow: var(--shadow);
+    }
+
+    .page {
+      display: none;
+      animation: pageIn .22s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes pageIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-card {
+      min-height: 208px;
+      padding: 24px;
+      border-radius: 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(115px, .8fr);
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #ffe0eb 0%, #f3e9ff 55%, #e8f2ff 100%);
+      box-shadow: 0 18px 42px rgba(142, 93, 130, .14);
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      right: -70px;
+      top: -80px;
+      background: rgba(255,255,255,.30);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .mini-badge {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+      font-size: .68rem;
+      color: #ad607b;
+      background: rgba(255,255,255,.7);
+    }
+
+    .hero-copy h2 {
+      max-width: 220px;
+      font-size: 1.82rem;
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+
+    .hero-copy p {
+      max-width: 205px;
+      margin-top: 10px;
+      color: #856f80;
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    .hero-art {
+      position: relative;
+      height: 150px;
+    }
+
+    .hero-art .bunny {
+      position: absolute;
+      left: 30%;
+      bottom: 20px;
+      z-index: 4;
+      font-size: 4.4rem;
+    }
+
+    .hero-art .berry {
+      position: absolute;
+      left: 4%;
+      bottom: 10px;
+      z-index: 5;
+      font-size: 2.65rem;
+      transform: rotate(-12deg);
+    }
+
+    .hero-art .moon {
+      position: absolute;
+      right: 2%;
+      top: 0;
+      font-size: 3.6rem;
+    }
+
+    .hero-art .cloud {
+      position: absolute;
+      bottom: -2px;
+      right: -4px;
+      font-size: 4rem;
+      opacity: .92;
+    }
+
+    .section {
+      margin-top: 26px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 13px;
+    }
+
+    .section-title h2 {
+      margin-top: 3px;
+      font-size: 1.18rem;
+      letter-spacing: -.025em;
+    }
+
+    .section-title p:not(.section-label) {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: .76rem;
+    }
+
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.85);
+      box-shadow: var(--shadow);
+    }
+
+    .mood-scroll {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 2px 2px 7px;
+      scrollbar-width: none;
+    }
+
+    .mood-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mood-card {
+      min-width: 92px;
+      height: 102px;
+      flex: 0 0 auto;
+      border-radius: 23px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .mood-card span {
+      font-size: 1.75rem;
+    }
+
+    .mood-card strong {
+      font-size: .73rem;
+    }
+
+    .mood-card.selected {
+      transform: translateY(-3px);
+      background: linear-gradient(145deg, #ffd9e6, #eee6ff);
+      outline: 2px solid rgba(255,145,181,.28);
+    }
+
+    .quick-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 11px;
+    }
+
+    .quick-card {
+      min-height: 94px;
+      padding: 15px;
+      border-radius: 23px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      transition: transform .18s ease;
+    }
+
+    .quick-card:active {
+      transform: scale(.98);
+    }
+
+    .quick-card > span {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      background: rgba(255,255,255,.70);
+    }
+
+    .quick-card strong {
+      display: block;
+      font-size: .88rem;
+    }
+
+    .quick-card small {
+      display: block;
+      margin-top: 3px;
+      color: #8d7888;
+      font-size: .67rem;
+    }
+
+    .pink {
+      background: var(--surface-soft);
+    }
+
+    .purple {
+      background: var(--surface-purple);
+    }
+
+    .yellow {
+      background: var(--surface-yellow);
+    }
+
+    .blue {
+      background: var(--surface-blue);
+    }
+
+    .card {
+      padding: 19px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.94);
+      border: 1px solid rgba(255,255,255,.9);
+      box-shadow: var(--shadow);
+    }
+
+    .routine-card {
+      padding: 8px 16px;
+    }
+
+    .routine-item {
+      min-height: 69px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .routine-item:last-child {
+      border-bottom: 0;
+    }
+
+    .routine-item input {
+      position: absolute;
+      opacity: 0;
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+      border-radius: 9px;
+      border: 2px solid #e9cad6;
+      background: white;
+    }
+
+    .routine-item input:checked + .check {
+      border-color: transparent;
+      background: linear-gradient(135deg, var(--pink), #df7ba1);
+    }
+
+    .routine-item input:checked + .check::after {
+      content: "✓";
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: .72rem;
+      font-weight: 900;
+    }
+
+    .task-icon {
+      width: 39px;
+      height: 39px;
+      flex-shrink: 0;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: #fff3f7;
+    }
+
+    .task-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .task-copy strong {
+      font-size: .82rem;
+    }
+
+    .task-copy small {
+      color: var(--muted);
+      font-size: .67rem;
+    }
+
+    .sticker-row {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+    }
+
+    .sticker-row button {
+      min-height: 66px;
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      background: #fff7fa;
+    }
+
+    .sticker-row button span {
+      font-size: 1.45rem;
+      color: #d9cad2;
+    }
+
+    .sticker-row button small {
+      color: var(--muted);
+    }
+
+    .sticker-row button.earned {
+      background: linear-gradient(145deg, #fff0cf, #ffe2ec);
+    }
+
+    .sticker-row button.earned span {
+      color: #f3b444;
+    }
+
+    .progress-row {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .progress-track {
+      flex: 1;
+      height: 8px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #f3e8ee;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #ff8faf, #bda6ff);
+      transition: width .25s ease;
+    }
+
+    .progress-row strong {
+      font-size: .72rem;
+      color: var(--muted);
+    }
+
+    .reward-message {
+      margin-top: 14px;
+      padding: 10px;
+      border-radius: 14px;
+      text-align: center;
+      font-size: .70rem;
+      color: var(--muted);
+      background: #fff5f8;
+    }
+
+    .page-banner {
+      margin-bottom: 18px;
+      padding: 22px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #ffe3ed, #eee7ff);
+      box-shadow: var(--shadow);
+    }
+
+    .page-banner > span {
+      font-size: 2rem;
+    }
+
+    .page-banner h2 {
+      margin-top: 8px;
+      font-size: 1.65rem;
+      letter-spacing: -.035em;
+    }
+
+    .page-banner p {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .82rem;
+      line-height: 1.5;
+    }
+
+    .tile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .tile {
+      min-height: 150px;
+      padding: 18px;
+      border-radius: 24px;
+      text-align: left;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .tile > span {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 2.1rem;
+    }
+
+    .tile h3 {
+      font-size: .95rem;
+    }
+
+    .tile p {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: .72rem;
+      line-height: 1.45;
+    }
+
+    .primary,
+    .secondary,
+    .danger {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 16px;
+      padding: 12px 15px;
+      font-weight: 800;
+    }
+
+    .primary {
+      color: white;
+      background: linear-gradient(135deg, var(--pink), #df7ca1);
+      box-shadow: 0 10px 24px rgba(229,112,155,.22);
+    }
+
+    .secondary {
+      background: #fff0f6;
+      color: var(--pink-dark);
+    }
+
+    .danger {
+      background: #ffe3eb;
+      color: #b95373;
+    }
+
+    .choice-banner {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 17px;
+      text-align: center;
+      font-size: .76rem;
+      color: var(--pink-dark);
+      background: #fff0f6;
+    }
+
+    .comfort-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .comfort-action {
+      min-height: 76px;
+      padding: 15px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      text-align: left;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .comfort-action > span {
+      width: 44px;
+      height: 44px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: #f5edff;
+      font-size: 1.4rem;
+    }
+
+    .comfort-action strong {
+      display: block;
+      font-size: .84rem;
+    }
+
+    .comfort-action small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .68rem;
+    }
+
+    .breathing-card {
+      margin-top: 18px;
+      padding: 22px;
+      border-radius: 25px;
+      text-align: center;
+      background: linear-gradient(145deg, #eee7ff, #ffe5ef);
+      box-shadow: var(--shadow);
+    }
+
+    .breathing-orb {
+      width: 110px;
+      height: 110px;
+      margin: 8px auto 15px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,.78);
+      font-size: 2rem;
+      transition: transform 4s ease-in-out;
+    }
+
+    .breathing-orb.breathe {
+      transform: scale(1.35);
+    }
+
+    .breathing-card p {
+      color: var(--muted);
+      font-size: .8rem;
+    }
+
+    .profile-card {
+      padding: 22px;
+    }
+
+    .profile-hero {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .profile-avatar {
+      width: 78px;
+      height: 78px;
+      border-radius: 25px;
+      display: grid;
+      place-items: center;
+      font-size: 2.4rem;
+      background: linear-gradient(145deg, #ffe2ec, #eee7ff);
+    }
+
+    .profile-hero h2 {
+      font-size: 1.25rem;
+    }
+
+    .profile-hero p {
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .78rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 13px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: .7rem;
+      font-weight: 800;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      color: var(--text);
+      background: #fffafd;
+    }
+
+    .field textarea {
+      min-height: 92px;
+      resize: vertical;
+    }
+
+    .avatar-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+    }
+
+    .avatar-option {
+      min-height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+      background: #fff2f7;
+    }
+
+    .avatar-option.selected {
+      outline: 2px solid var(--pink);
+      background: #ffe2ec;
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .theme-option {
+      padding: 15px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-align: left;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .theme-option strong {
+      font-size: .84rem;
+    }
+
+    .theme-option small {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: .68rem;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      left: 50%;
+      bottom: max(10px, env(safe-area-inset-bottom));
+      transform: translateX(-50%);
+      z-index: 100;
+      width: min(calc(100% - 24px), 530px);
+      min-height: 74px;
+      padding: 8px 9px;
+      border: 1px solid rgba(255,255,255,.94);
+      border-radius: 25px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      background: rgba(255,252,253,.92);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      box-shadow: 0 14px 40px rgba(94,66,88,.16);
+    }
+
+    .bottom-nav button {
+      border-radius: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      background: transparent;
+      color: var(--muted);
+    }
+
+    .bottom-nav button span {
+      font-size: 1.15rem;
+    }
+
+    .bottom-nav button small {
+      font-size: .56rem;
+      font-weight: 800;
+    }
+
+    .bottom-nav button.active {
+      color: var(--pink-dark);
+      background: linear-gradient(145deg, #ffe2eb, #f0e8ff);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 98px;
+      z-index: 200;
+      transform: translate(-50%, 18px);
+      opacity: 0;
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: white;
+      background: rgba(79,57,74,.93);
+      font-size: .72rem;
+      pointer-events: none;
+      transition: .2s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    body.theme-moon {
+      --bg: #f6f4ff;
+      --pink: #b89fff;
+      --pink-dark: #8870d4;
+      --surface-soft: #eee8ff;
+    }
+
+    body.theme-garden {
+      --bg: #f8fff9;
+      --pink: #f0a1b6;
+      --pink-dark: #c56b85;
+      --surface-soft: #eef9f4;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <header class="app-header">
+
+      <div>
+        <p class="eyebrow">WELCOME BACK</p>
+        <h1>Littleberry 🍓</h1>
+        <p class="subtitle">Your cozy little space</p>
+      </div>
+
+      <button
+        class="profile-button"
+        data-nav="profile"
+        aria-label="Open profile"
+      >
+        <span id="headerAvatar">🐰</span>
+      </button>
+
+    </header>
+
+
+    <main>
+
+      <section
+        class="page active"
+        id="page-home"
+      >
+
+        <section class="hero-card">
+
+          <div class="hero-copy">
+            <span class="mini-badge">
+              ✨ cozy mode
+            </span>
+
+            <h2>
+              Hi, <span id="homeName">little berry</span> ♡
+            </h2>
+
+            <p>
+              What does your heart need today?
+            </p>
+          </div>
+
+          <div class="hero-art">
+            <span class="moon">🌙</span>
+            <span class="bunny" id="heroAvatar">🐰</span>
+            <span class="berry">🍓</span>
+            <span class="cloud">☁️</span>
+          </div>
+
+        </section>
+
+
+        <section class="section">
+
+          <div class="section-title">
+
+            <div>
+              <p class="section-label">
+                DAILY CHECK-IN
+              </p>
+
+              <h2>
+                How are you feeling?
+              </h2>
+            </div>
+
+            <span class="section-icon">
+              🌸
+            </span>
+
+          </div>
+
+
+          <div class="mood-scroll">
+
+            <button class="mood-card" data-mood="Happy">
+              <span>🍓</span>
+              <strong>Happy</strong>
+            </button>
+
+            <button class="mood-card" data-mood="Calm">
+              <span>☀️</span>
+              <strong>Calm</strong>
+            </button>
+
+            <button class="mood-card" data-mood="Okay">
+              <span>☁️</span>
+              <strong>Okay</strong>
+            </button>
+
+            <button class="mood-card" data-mood="Sad">
+              <span>🌧️</span>
+              <strong>Sad</strong>
+            </button>
+
+            <button class="mood-card" data-mood="Anxious">
+              <span>💜</span>
+              <strong>Anxious</strong>
+            </button>
+
+            <button class="mood-card" data-mood="Tired">
+              <span>🌙</span>
+              <strong>Tired</strong>
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <section class="section">
+
+          <div class="section-title">
+            <div>
+              <p class="section-label">
+                LITTLE THINGS
+              </p>
+
+              <h2>
+                What would you like?
+              </h2>
+            </div>
+          </div>
+
+
+          <div class="quick-grid">
+
+            <button class="quick-card pink" data-nav="activities">
+              <span>🎨</span>
+
+              <div>
+                <strong>Play</strong>
+                <small>Activities</small>
+              </div>
+            </button>
+
+
+            <button class="quick-card purple" data-nav="comfort">
+              <span>💗</span>
+
+              <div>
+                <strong>Comfort</strong>
+                <small>Cozy corner</small>
+              </div>
+            </button>
+
+
+            <button class="quick-card yellow" data-nav="rewards">
+              <span>⭐</span>
+
+              <div>
+                <strong>Rewards</strong>
+                <small>Sticker chart</small>
+              </div>
+            </button>
+
+
+            <button class="quick-card blue" data-nav="routine">
+              <span>🌙</span>
+
+              <div>
+                <strong>Routine</strong>
+                <small>Little tasks</small>
+              </div>
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <section class="section">
+
+          <div class="section-title">
+
+            <div>
+              <p class="section-label">
+                TODAY
+              </p>
+
+              <h2>
+                Little routine
+              </h2>
+            </div>
+
+            <button
+              class="secondary"
+              style="width:auto;min-height:auto;padding:8px 11px;font-size:.7rem;"
+              data-nav="routine"
+            >
+              See all
+            </button>
+
+          </div>
+
+
+          <div class="card routine-card">
+
+            <label class="routine-item">
+              <input type="checkbox" data-task="bed" />
+              <span class="check"></span>
+              <span class="task-icon">🛏️</span>
+
+              <span class="task-copy">
+                <strong>Make my bed</strong>
+                <small>Start the day cozy</small>
+              </span>
+            </label>
+
+
+            <label class="routine-item">
+              <input type="checkbox" data-task="teeth" />
+              <span class="check"></span>
+              <span class="task-icon">🪥</span>
+
+              <span class="task-copy">
+                <strong>Brush my teeth</strong>
+                <small>Fresh and sparkly</small>
+              </span>
+            </label>
+
+
+            <label class="routine-item">
+              <input type="checkbox" data-task="drink" />
+              <span class="check"></span>
+              <span class="task-icon">🥤</span>
+
+              <span class="task-copy">
+                <strong>Have a drink</strong>
+                <small>Little hydration break</small>
+              </span>
+            </label>
+
+
+            <label class="routine-item">
+              <input type="checkbox" data-task="snack" />
+              <span class="check"></span>
+              <span class="task-icon">🍓</span>
+
+              <span class="task-copy">
+                <strong>Have a snack</strong>
+                <small>Something yummy</small>
+              </span>
+            </label>
+
+          </div>
+
+        </section>
+
+
+        <section class="section">
+
+          <div class="section-title">
+
+            <div>
+              <p class="section-label">
+                LITTLE WINS
+              </p>
+
+              <h2>
+                Sticker chart
+              </h2>
+            </div>
+
+            <button
+              class="secondary"
+              style="width:auto;min-height:auto;padding:8px 11px;font-size:.7rem;"
+              data-nav="rewards"
+            >
+              Open
+            </button>
+
+          </div>
+
+
+          <div class="card">
+
+            <div class="sticker-row">
+              <button data-day="Mon"><span>☆</span><small>M</small></button>
+              <button data-day="Tue"><span>☆</span><small>T</small></button>
+              <button data-day="Wed"><span>☆</span><small>W</small></button>
+              <button data-day="Thu"><span>☆</span><small>T</small></button>
+              <button data-day="Fri"><span>☆</span><small>F</small></button>
+              <button data-day="Sat"><span>☆</span><small>S</small></button>
+              <button data-day="Sun"><span>☆</span><small>S</small></button>
+            </div>
+
+
+            <div class="progress-row">
+
+              <div class="progress-track">
+                <div
+                  class="progress-fill"
+                  id="stickerProgress"
+                ></div>
+              </div>
+
+              <strong id="stickerCount">
+                0/7
+              </strong>
+
+            </div>
+
+
+            <p class="reward-message">
+              🧸 Tiny wins deserve celebrating too ♡
+            </p>
+
+          </div>
+
+        </section>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="page-activities"
+      >
+
+        <div class="page-banner">
+          <span>🎨</span>
+          <h2>Little Activities</h2>
+          <p>
+            Choose something fun, gentle or delightfully silly.
+          </p>
+        </div>
+
+
+        <div class="tile-grid">
+
+          <button class="tile" data-activity="Colouring">
+            <span>🖍️</span>
+            <h3>Colouring</h3>
+            <p>Grab some colours and make something pretty.</p>
+          </button>
+
+          <button class="tile" data-activity="Cartoons">
+            <span>📺</span>
+            <h3>Cartoons</h3>
+            <p>Pick a familiar comfort show.</p>
+          </button>
+
+          <button class="tile" data-activity="Music">
+            <span>🎧</span>
+            <h3>Music</h3>
+            <p>Play something happy or calming.</p>
+          </button>
+
+          <button class="tile" data-activity="Crafts">
+            <span>✂️</span>
+            <h3>Crafts</h3>
+            <p>Paper, stickers, glue and tiny ideas.</p>
+          </button>
+
+          <button class="tile" data-activity="Plushie Time">
+            <span>🧸</span>
+            <h3>Plushie Time</h3>
+            <p>Grab your favourite cuddle buddy.</p>
+          </button>
+
+          <button class="tile" data-activity="Quiet Time">
+            <span>☁️</span>
+            <h3>Quiet Time</h3>
+            <p>Rest somewhere soft with no pressure.</p>
+          </button>
+
+        </div>
+
+
+        <div
+          class="choice-banner"
+          id="activityChoice"
+        >
+          🍓 Choose something cozy.
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="page-rewards"
+      >
+
+        <div class="page-banner">
+          <span>⭐</span>
+          <h2>Berry Rewards</h2>
+          <p>
+            Tap a day whenever you want to celebrate a little win.
+          </p>
+        </div>
+
+
+        <div class="card">
+
+          <div
+            style="text-align:center;padding:8px 0 22px;"
+          >
+            <strong
+              id="rewardBigCount"
+              style="display:block;font-size:3.8rem;color:var(--pink-dark);"
+            >
+              0
+            </strong>
+
+            <span
+              style="color:var(--muted);font-size:.78rem;"
+            >
+              stickers this week
+            </span>
+          </div>
+
+
+          <div class="sticker-row">
+            <button data-day="Mon"><span>☆</span><small>M</small></button>
+            <button data-day="Tue"><span>☆</span><small>T</small></button>
+            <button data-day="Wed"><span>☆</span><small>W</small></button>
+            <button data-day="Thu"><span>☆</span><small>T</small></button>
+            <button data-day="Fri"><span>☆</span><small>F</small></button>
+            <button data-day="Sat"><span>☆</span><small>S</small></button>
+            <button data-day="Sun"><span>☆</span><small>S</small></button>
+          </div>
+
+
+          <button
+            class="secondary"
+            id="clearStickers"
+            style="margin-top:18px;"
+          >
+            Reset sticker chart
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="page-comfort"
+      >
+
+        <div class="page-banner">
+          <span>💗</span>
+          <h2>Comfort Corner</h2>
+          <p>
+            Pick one gentle thing. You do not have to do everything.
+          </p>
+        </div>
+
+
+        <div class="comfort-list">
+
+          <button
+            class="comfort-action"
+            data-comfort="breathing"
+          >
+            <span>🌬️</span>
+
+            <div>
+              <strong>Slow breathing</strong>
+              <small>Follow a calm breathing prompt.</small>
+            </div>
+          </button>
+
+
+          <button
+            class="comfort-action"
+            data-comfort="plushie"
+          >
+            <span>🧸</span>
+
+            <div>
+              <strong>Plushie cuddle</strong>
+              <small>Grab something soft and hold it close.</small>
+            </div>
+          </button>
+
+
+          <button
+            class="comfort-action"
+            data-comfort="drink"
+          >
+            <span>🥤</span>
+
+            <div>
+              <strong>Little sip</strong>
+              <small>Take a few gentle sips of a drink.</small>
+            </div>
+          </button>
+
+
+          <button
+            class="comfort-action"
+            data-comfort="quiet"
+          >
+            <span>🌙</span>
+
+            <div>
+              <strong>Quiet moment</strong>
+              <small>Dim things down and rest for a little bit.</small>
+            </div>
+          </button>
+
+        </div>
+
+
+        <div
+          class="breathing-card"
+          id="breathingCard"
+        >
+
+          <div
+            class="breathing-orb"
+            id="breathingOrb"
+          >
+            ☁️
+          </div>
+
+          <h3 id="breathingTitle">
+            Ready when you are
+          </h3>
+
+          <p id="breathingText">
+            Tap start and follow the gentle prompts.
+          </p>
+
+          <button
+            class="primary"
+            id="startBreathing"
+            style="margin-top:16px;"
+          >
+            Start breathing
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="page-routine"
+      >
+
+        <div class="page-banner">
+          <span>🌙</span>
+          <h2>My Little Routine</h2>
+          <p>
+            No perfect streaks required. Tick things off whenever you are ready.
+          </p>
+        </div>
+
+
+        <div class="card routine-card">
+
+          <label class="routine-item">
+            <input type="checkbox" data-task="bed" />
+            <span class="check"></span>
+            <span class="task-icon">🛏️</span>
+            <span class="task-copy">
+              <strong>Make my bed</strong>
+              <small>Start the day cozy</small>
+            </span>
+          </label>
+
+          <label class="routine-item">
+            <input type="checkbox" data-task="teeth" />
+            <span class="check"></span>
+            <span class="task-icon">🪥</span>
+            <span class="task-copy">
+              <strong>Brush my teeth</strong>
+              <small>Fresh and sparkly</small>
+            </span>
+          </label>
+
+          <label class="routine-item">
+            <input type="checkbox" data-task="drink" />
+            <span class="check"></span>
+            <span class="task-icon">🥤</span>
+            <span class="task-copy">
+              <strong>Have a drink</strong>
+              <small>Little hydration break</small>
+            </span>
+          </label>
+
+          <label class="routine-item">
+            <input type="checkbox" data-task="snack" />
+            <span class="check"></span>
+            <span class="task-icon">🍓</span>
+            <span class="task-copy">
+              <strong>Have a snack</strong>
+              <small>Something yummy</small>
+            </span>
+          </label>
+
+          <label class="routine-item">
+            <input type="checkbox" data-task="clothes" />
+            <span class="check"></span>
+            <span class="task-icon">🧦</span>
+            <span class="task-copy">
+              <strong>Get comfy</strong>
+              <small>Put on clothes that feel nice</small>
+            </span>
+          </label>
+
+          <label class="routine-item">
+            <input type="checkbox" data-task="activity" />
+            <span class="check"></span>
+            <span class="task-icon">🎨</span>
+            <span class="task-copy">
+              <strong>Do something fun</strong>
+              <small>A little playtime counts</small>
+            </span>
+          </label>
+
+          <label class="routine-item">
+            <input type="checkbox" data-task="kind" />
+            <span class="check"></span>
+            <span class="task-icon">💗</span>
+            <span class="task-copy">
+              <strong>Be kind to myself</strong>
+              <small>One gentle thing for me</small>
+            </span>
+          </label>
+
+        </div>
+
+
+        <button
+          class="secondary"
+          id="resetRoutine"
+          style="margin-top:14px;"
+        >
+          Reset routine
+        </button>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="page-settings"
+      >
+
+        <div class="page-banner">
+          <span>⚙️</span>
+          <h2>Settings</h2>
+          <p>
+            Make Littleberry look and feel the way you like.
+          </p>
+        </div>
+
+
+        <div class="section-title">
+          <div>
+            <p class="section-label">
+              THEME
+            </p>
+
+            <h2>
+              Choose your vibe
+            </h2>
+          </div>
+        </div>
+
+
+        <div class="theme-grid">
+
+          <button
+            class="theme-option"
+            data-theme="strawberry"
+          >
+            <div>
+              <strong>🍓 Strawberry Cream</strong>
+              <small>Pink, cream and berry</small>
+            </div>
+
+            <span>›</span>
+          </button>
+
+
+          <button
+            class="theme-option"
+            data-theme="moon"
+          >
+            <div>
+              <strong>🌙 Moonbaby</strong>
+              <small>Lavender, blue and stars</small>
+            </div>
+
+            <span>›</span>
+          </button>
+
+
+          <button
+            class="theme-option"
+            data-theme="garden"
+          >
+            <div>
+              <strong>🌷 Fairy Garden</strong>
+              <small>Mint, blush and flowers</small>
+            </div>
+
+            <span>›</span>
+          </button>
+
+        </div>
+
+
+        <button
+          class="danger"
+          id="clearAllData"
+          style="margin-top:22px;"
+        >
+          Reset all Littleberry data
+        </button>
+
+      </section>
+
+
+      <section
+        class="page"
+        id="page-profile"
+      >
+
+        <div class="page-banner">
+          <span>🐰</span>
+          <h2>My Profile</h2>
+          <p>
+            Make your Littleberry space feel more like yours.
+          </p>
+        </div>
+
+
+        <div class="card profile-card">
+
+          <div class="profile-hero">
+
+            <div
+              class="profile-avatar"
+              id="profilePreviewAvatar"
+            >
+              🐰
+            </div>
+
+            <div>
+              <h2 id="profilePreviewName">
+                Little Berry
+              </h2>
+
+              <p id="profilePreviewTagline">
+                cozy little dreamer ♡
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="profileName">
+                NAME / NICKNAME
+              </label>
+
+              <input
+                id="profileName"
+                maxlength="30"
+                placeholder="Little Berry"
+              />
+            </div>
+
+
+            <div class="field">
+              <label for="profileTagline">
+                LITTLE TAGLINE
+              </label>
+
+              <input
+                id="profileTagline"
+                maxlength="50"
+                placeholder="cozy little dreamer ♡"
+              />
+            </div>
+
+
+            <div class="field">
+              <label for="profilePronouns">
+                PRONOUNS
+              </label>
+
+              <input
+                id="profilePronouns"
+                maxlength="30"
+                placeholder="she/her"
+              />
+            </div>
+
+
+            <div class="field">
+              <label for="profileLittleAge">
+                LITTLE AGE
+              </label>
+
+              <input
+                id="profileLittleAge"
+                maxlength="20"
+                placeholder="e.g. 2–6"
+              />
+            </div>
+
+
+            <div class="field">
+              <label>
+                CHOOSE AN AVATAR
+              </label>
+
+              <div class="avatar-grid">
+
+                <button
+                  class="avatar-option"
+                  data-avatar="🐰"
+                >
+                  🐰
+                </button>
+
+                <button
+                  class="avatar-option"
+                  data-avatar="🧸"
+                >
+                  🧸
+                </button>
+
+                <button
+                  class="avatar-option"
+                  data-avatar="🐱"
+                >
+                  🐱
+                </button>
+
+                <button
+                  class="avatar-option"
+                  data-avatar="🦊"
+                >
+                  🦊
+                </button>
+
+                <button
+                  class="avatar-option"
+                  data-avatar="🌙"
+                >
+                  🌙
+                </button>
+
+                <button
+                  class="avatar-option"
+                  data-avatar="🍓"
+                >
+                  🍓
+                </button>
+
+              </div>
+            </div>
+
+
+            <div class="field">
+              <label for="profileComfort">
+                FAVOURITE COMFORT
+              </label>
+
+              <textarea
+                id="profileComfort"
+                placeholder="Plushies, cartoons, blankets..."
+              ></textarea>
+            </div>
+
+
+            <button
+              class="primary"
+              id="saveProfile"
+            >
+              Save profile
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <nav class="bottom-nav">
+
+    <button
+      class="active"
+      data-nav="home"
+    >
+      <span>🏠</span>
+      <small>Home</small>
+    </button>
+
+    <button data-nav="activities">
+      <span>🎨</span>
+      <small>Play</small>
+    </button>
+
+    <button data-nav="rewards">
+      <span>⭐</span>
+      <small>Rewards</small>
+    </button>
+
+    <button data-nav="comfort">
+      <span>💗</span>
+      <small>Comfort</small>
+    </button>
+
+    <button data-nav="settings">
+      <span>⚙️</span>
+      <small>Settings</small>
+    </button>
+
+  </nav>
+
+
+  <div
+    class="toast"
+    id="toast"
+    aria-live="polite"
+  ></div>
+
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
