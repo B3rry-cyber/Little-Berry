@@ -3,14 +3,17 @@
   "short_name": "Littleberry",
   "description": "A cozy little-space web app for comfort, routines, activities and rewards.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#fff7fb",
-  "theme_color": "#ffb7cb",
+  "orientation": "portrait",
+  "background_color": "#fff8fb",
+  "theme_color": "#fff8fb",
   "icons": [
     {
       "src": "favicon.svg",
       "sizes": "any",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ]
 }
